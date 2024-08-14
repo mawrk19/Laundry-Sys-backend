@@ -4,6 +4,8 @@ package com.example.demo.invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -20,6 +22,8 @@ public class InvoiceController {
 
     @PostMapping
     public Invoice createInvoice(@RequestBody Invoice invoice) {
+        invoice.setDate(LocalDate.now());
+        invoice.setTime(LocalTime.now());
         return invoiceService.saveInvoice(invoice);
     }
 }

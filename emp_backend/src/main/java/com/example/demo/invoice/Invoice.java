@@ -1,11 +1,9 @@
+// src/main/java/com/example/demo/invoice/Invoice.java
 package com.example.demo.invoice;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "invoice_table")
@@ -13,38 +11,24 @@ public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "customer")
     private String customer;
-
-    @Column(name = "product")
-    private String product;
-
-    @Column(name = "service")
     private String service;
-
-    @Column(name = "quantity")
+    private String option;
     private int quantity;
-
-    @Column(name = "price")
     private double price;
+    private LocalDate date;
+    private LocalTime time;
+    private int kilo; // New field
 
-    public Invoice() {}
+    // Getters and setters
 
-    public Invoice(String customer, String product, String service, int quantity, double price) {
-        this.customer = customer;
-        this.product = product;
-        this.service = service;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,20 +40,20 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
-
     public String getService() {
         return service;
     }
 
     public void setService(String service) {
         this.service = service;
+    }
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
     }
 
     public int getQuantity() {
@@ -86,5 +70,29 @@ public class Invoice {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
+    public int getKilo() {
+        return kilo;
+    }
+
+    public void setKilo(int kilo) {
+        this.kilo = kilo;
     }
 }
